@@ -1,0 +1,31 @@
+.createpost {
+  max-width: 500px;
+  border: 1px solid rgb(173, 173, 173);
+  margin: 40px auto; 
+}
+.header {
+  display: flex;
+}
+#post {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  color: rgb(32, 100, 177);
+  font-weight: 600;
+
+}
+.header h2 {
+  margin: 4px auto;
+  font-weight: bolder;
+  color: rgb(173, 173, 173);
+}
+.middle_section {
+  border-top: 1px solid rgb(173, 173, 173);
+  border-bottom: 1px solid rgb(173, 173, 173);
+  margin-bottom: 8px;
+}
+textarea {
+  padding: 7px;
+  outline: none;
+}
