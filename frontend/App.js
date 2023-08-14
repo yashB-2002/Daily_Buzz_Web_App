@@ -10,6 +10,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CreatePost from "./components/CreatePost";
 import { Context } from "./Context";
+import NewUserProfile from "./components/NewUserProfile";
+import FollowingPosts from "./components/FollowingPosts";
 function App() {
   const [login, setLogin] = useState(false);
   return (
@@ -21,8 +23,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route exact path="/profile" element={<Profile />} />
             <Route path="/createpost" element={<CreatePost />} />
+            <Route path="/profile/:id" element={<NewUserProfile />} />
+            <Route path="/follwingposts" element={<FollowingPosts />} />
           </Routes>
           <ToastContainer theme="colored" />
         </Context.Provider>
