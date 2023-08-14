@@ -37,3 +37,35 @@
   cursor: pointer;
   margin-top: 8px;
 }
+@media screen and (max-width: 480px) {
+  .signUp {
+    padding: 15px;
+  }
+
+  .form-container {
+    padding: 15px;
+  }
+  .loginForm {
+    border: none;
+    margin-bottom: 10px;
+  }
+  input {
+    padding: 5px;
+    margin: 3px 0px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+  }
+  input[type="email"],
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  #submit-btn {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
