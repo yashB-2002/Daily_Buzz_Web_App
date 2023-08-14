@@ -32,7 +32,7 @@ router.post("/createpost", requireLogin, (req, res) => {
 router.get("/getposts", (req, res) => {
   post_model
     .find()
-    .populate("postedBy", "_id name")
+    .populate("postedBy", "_id name profilepic")
     .populate("comments.postedBy", "_id name")
     .then((d) => res.json(d))
     .catch((err) => res.json(err));
@@ -56,6 +56,7 @@ router.put("/likepost", requireLogin, (req, res) => {
       },
       { new: true }
     )
+    .populate("postedBy", "_id name profilepic")
     .exec((err, result) => {
       if (err) return res.status(422).json({ error: err });
       else res.json(result);
@@ -71,6 +72,7 @@ router.put("/unlikepost", requireLogin, (req, res) => {
       },
       { new: true }
     )
+    .populate("postedBy", "_id name profilepic")
     .exec((err, result) => {
       if (err) return res.status(422).json({ error: err });
       else res.json(result);
@@ -91,7 +93,7 @@ router.put("/commentpost", requireLogin, (req, res) => {
       },
       { new: true }
     )
-    .populate("comments.postedBy", "_id name")
+    .populate("comments.postedBy", "_id name profilepic")
     .exec((err, result) => {
       if (err) return res.status(422).json({ error: err });
       else res.json(result);
@@ -174,4 +176,89 @@ router.delete("/delpost/:postid", requireLogin, (req, res) => {
     });
 });
 
+router.get("/user/:id", (req, res) => {
+  user_model
+    .findOne({ _id: req.params.id })
+    .select("-password")
+    .then((user) => {
+      post_model
+        .find({ postedBy: req.params.id })
+        .populate("postedBy", "_id")
+        .exec((err, posts) => {
+          if (err) return res.status(422).json({ error: err });
+          return res.status(200).json({ user, posts });
+        });
+    })
+    .catch((err) => {
+      return res.status(404).json({ error: "User Not Found.." });
+    });
+});
+
+router.put("/follow", requireLogin, (req, res) => {
+  user_model
+    .findByIdAndUpdate(req.body.id, {
+      $push: { followers: req.user._id },
+    })
+    .then(() => {
+      user_model
+        .findByIdAndUpdate(req.user._id, {
+          $push: { following: req.body.id },
+        })
+        .then((d) => res.status(201).json(d));
+    })
+    .catch((err) => res.status(422).json({ error: err }));
+});
+
+// user_model
+//   .findByIdAndUpdate(req.body.id, {
+//     $push: { followers: req.user._id },
+//   })
+//   .then(() => {
+//     user_model
+//       .findByIdAndUpdate(req.user._id, {
+//         $push: { following: req.body.id },
+//       })
+//       .then((d) => res.status(201).json(d));
+//   })
+//   .catch((err) => res.status(422).json({ error: err }));
+// });
+router.put("/unfollow", requireLogin, (req, res) => {
+  user_model
+    .findByIdAndUpdate(req.body.id, {
+      $pull: { followers: req.user._id },
+    })
+    .then(() => {
+      user_model
+        .findByIdAndUpdate(req.user._id, {
+          $pull: { following: req.body.id },
+        })
+        .then((d) => res.status(201).json(d));
+    })
+    .catch((err) => res.status(422).json({ error: err }));
+});
+
+router.put("/upload", requireLogin, (req, res) => {
+  user_model
+    .findByIdAndUpdate(
+      req.user._id,
+      {
+        $set: { profilepic: req.body.pic },
+      },
+      { new: true }
+    )
+    .exec((err, result) => {
+      if (err) {
+        return res.status(422).json({ error: err });
+      } else res.json(result);
+    });
+});
+
+router.get("/follwingposts", requireLogin, (req, res) => {
+  post_model
+    .find({ postedBy: { $in: req.user.following } })
+    .populate("postedBy", "_id name")
+    .populate("comments.postedBy", "_id name")
+    .then((posts) => res.status(200).json(posts))
+    .catch((e) => res.status(404).json({ error: e }));
+});
 module.exports = router;
