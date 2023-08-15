@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Home() {
   const navigate = useNavigate();
   const [apidata, setApiData] = useState([]);
@@ -99,11 +99,17 @@ function Home() {
             <div className="card_header">
               <div className="card_pic">
                 <img
-                  src="https://images.unsplash.com/photo-1485206412256-701ccc5b93ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyc29ufGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                  src={
+                    p.postedBy.profilepic
+                      ? p.postedBy.profilepic
+                      : "https://images.unsplash.com/photo-1485206412256-701ccc5b93ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyc29ufGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                  }
                   alt=""
                 />
               </div>
-              <h5>{p.postedBy.name}</h5>
+              <h5>
+                <Link to={`/profile/${p.postedBy._id}`}>{p.postedBy.name}</Link>
+              </h5>
             </div>
             <div className="card_image">
               <img src={p.image} alt="" />
