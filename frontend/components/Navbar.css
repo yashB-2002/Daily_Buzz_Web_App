@@ -18,6 +18,10 @@ li {
   padding: 2px 15px;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
+.active-link {
+  background-color: #3498db; /* Apply your desired active link color */
+  font-weight: bold; /* Make the active link text bold */
+}
 a {
   cursor: pointer;
   color: black;
@@ -35,4 +39,98 @@ a {
   font-size: 1.1rem;
   color: #000;
   margin: auto 4px;
+}
+
+@media screen and (min-width: 200px) and (max-width: 400px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-brand {
+    font-size: 38px;
+    margin-bottom: 12px;
+  }
+
+  .nav li {
+    font-size: 25px;
+    margin: 5px 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-brand {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .nav li {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  .btn {
+    font-size: 16px;
+    margin: 2px 5px;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-brand {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .nav li {
+    font-size: 20px;
+    margin: 5px 0;
+  }
+  .btn {
+    font-size: 20px;
+    margin: 2px 5px;
+  }
+}
+@media screen and (min-width: 200px) and (max-width: 400px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-brand {
+    font-size: 38px;
+    margin-bottom: 12px;
+  }
+
+  .nav li {
+    font-size: 25px;
+    margin: 5px 0;
+  }
 }
