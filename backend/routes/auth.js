@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { Jwt_secret_token } = require("../mongo");
 const requireLogin = require("../middlewares/requireLogin");
+const Message = require("../models/Message");
 router.get("/", (req, res) => {
   res.send("hello from express");
 });
@@ -261,4 +262,40 @@ router.get("/follwingposts", requireLogin, (req, res) => {
     .then((posts) => res.status(200).json(posts))
     .catch((e) => res.status(404).json({ error: e }));
 });
+
+router.post("/msg", requireLogin, async (req, res) => {
+  try {
+    const { from, to, message } = req.body;
+    const newmsg = await Message.create({
+      users: [from, to],
+      sender: from,
+      message: message,
+    });
+    return res.status(200).json(newmsg);
+  } catch (error) {
+    return res.status(400).json({ error: error });
+  }
+});
+
+router.get("/get/msg/:user1Id/:user2Id", requireLogin, async (req, res) => {
+  try {
+    const from = req.params.user1Id;
+    const to = req.params.user2Id;
+    const newmsg = await Message.find({
+      users: {
+        $all: [from, to],
+      },
+    }).sort({ updatedAt: 1 });
+    const allmsgs = newmsg.map((msg) => {
+      return {
+        myself: msg.sender.toString() === from,
+        message: msg.message,
+      };
+    });
+    return res.status(201).json(allmsgs);
+  } catch (error) {
+    return res.status(400).json({ error: error });
+  }
+});
+
 module.exports = router;
