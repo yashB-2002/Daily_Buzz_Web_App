@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const socket = require("socket.io");
 const dotenv = require("dotenv");
 dotenv.config({
   path: "./config.env",
@@ -22,6 +23,25 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", () => {
   console.log("not connected to atlas");
 });
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log("server is running on ", PORT);
+});
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    credentials: true,
+  },
+});
+global.onlineUsers = new Map();
+io.on("connection", (socket) => {
+  global.chatsocket = socket;
+  socket.on("addUser", (id) => {
+    onlineUsers.set(id, socket.id);
+  });
+  socket.on("send-msg", (data) => {
+    const sendUserSocket = onlineUsers.get(data.to);
+    if (sendUserSocket) {
+      socket.to(sendUserSocket).emit("msg-recieve", data.message);
+    }
+  });
 });
