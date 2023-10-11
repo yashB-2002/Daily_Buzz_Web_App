@@ -12,6 +12,7 @@ import CreatePost from "./components/CreatePost";
 import { Context } from "./Context";
 import NewUserProfile from "./components/NewUserProfile";
 import FollowingPosts from "./components/FollowingPosts";
+import Chat from "./components/Chat";
 function App() {
   const [login, setLogin] = useState(false);
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/createpost" element={<CreatePost />} />
             <Route path="/profile/:id" element={<NewUserProfile />} />
             <Route path="/follwingposts" element={<FollowingPosts />} />
+            <Route path="/chat" element={<Chat />} />
           </Routes>
           <ToastContainer theme="colored" />
         </Context.Provider>
