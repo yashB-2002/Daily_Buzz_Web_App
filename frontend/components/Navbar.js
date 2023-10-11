@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../Context";
@@ -11,16 +11,23 @@ const Navbar = (props) => {
     if (token || props.login) {
       return [
         <>
-          <Link to="/">
+          <NavLink to="/">
             <li>Home</li>
-          </Link>
-          <Link to="/createpost">
-            <li>Create Post</li>
-          </Link>
-          <Link to="/profile">
+          </NavLink>
+          <NavLink to="/follwingposts">
+            <li>Personal Feed</li>
+          </NavLink>
+          <NavLink to="/createpost">
+            <li>Add Post</li>
+          </NavLink>
+          <NavLink to="/chat">
+            <li>Chat</li>
+          </NavLink>
+          <NavLink to="/profile">
             <li>Profile</li>
-          </Link>
-          <Link>
+          </NavLink>
+
+          <NavLink>
             <button
               className="btn"
               onClick={() => {
@@ -31,27 +38,27 @@ const Navbar = (props) => {
             >
               Log Out
             </button>
-          </Link>
+          </NavLink>
         </>,
       ];
     } else {
       return [
         <>
-          <Link to="/signup">
+          <NavLink to="/signup">
             <li>SignUp</li>
-          </Link>
-          <Link to="/signin">
+          </NavLink>
+          <NavLink to="/signin">
             <li>SignIn</li>
-          </Link>
+          </NavLink>
         </>,
       ];
     }
   }
   return (
     <div className="navbar">
-      <Link to="/">
+      <NavLink to="/">
         <p className="nav-brand">DailyBuzzz</p>
-      </Link>
+      </NavLink>
       <ul className="nav">{navbarChanging()}</ul>
     </div>
   );
