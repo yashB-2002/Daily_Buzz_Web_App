@@ -13,6 +13,7 @@
 - User can follow / Unfollow other users as well.
 - User can see every other user post and also his/her following user's post as well.
 - User can upload or remove their profile pic.
+- User can chat with all other users available.
 
 ### Key things required to build this web app -
 -  How to build backend APIs with Node.js & Express.
@@ -21,12 +22,13 @@
 -  Images upload using Cloudinary.
 -  Managing data with mongodb.
 -  Testing API using Thunderclient.
+-  Realtime notification of messages using socket.io.
  
 ### Screenshots -
 
 **Register Page** 
  ![register](https://github.com/yashB-2002/Daily_Buzz_Web_App/assets/86493014/f2ece14e-a2ff-45ef-8f25-7abbecae9764)
-
+ 
 **Login Page**
 
 ![login](https://github.com/yashB-2002/Daily_Buzz_Web_App/assets/86493014/77b2b0e5-4afe-4173-b169-cd261bfaa943)
@@ -68,9 +70,19 @@
 **My Following Post(Before Following)**
 ![Screenshot from 2023-08-14 11-25-38](https://github.com/yashB-2002/Daily_Buzz_Web_App/assets/86493014/aeb435eb-c50b-47b1-88f9-89ae7dafab25)
 
+
 **My Following Post(After Following)**
 ![Screenshot from 2023-08-14 11-11-17](https://github.com/yashB-2002/Daily_Buzz_Web_App/assets/86493014/99372f35-ae95-40dd-b38c-79b08bd7b865)
 ![Screenshot from 2023-08-14 11-11-05](https://github.com/yashB-2002/Daily_Buzz_Web_App/assets/86493014/2c38db8b-2eaa-4633-87ce-7c0c6da6c9e8)
+
+
+**Chatting Page(Message Sent By User)**
+
+![Screenshot from 2023-10-11 23-02-23](https://github.com/yashB-2002/Daily_Buzz_Web_App/assets/86493014/56af452b-8733-45ee-9cf9-faab5407453f)
+
+**Chatting Page(MessgaeRecieved by other User)**
+
+![Screenshot from 2023-10-11 23-02-10](https://github.com/yashB-2002/Daily_Buzz_Web_App/assets/86493014/a065fe5c-2351-4bbc-b867-a7db7124e21b)
 
 
 
