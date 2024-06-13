@@ -9,9 +9,9 @@ const ProfileComp = (props) => {
     // post request in cloudinary
     const data = new FormData();
     data.append("file", image);
-    data.append("upload_preset", "obabukli");
-    data.append("cloud_name", "yash547");
-    fetch("https://api.cloudinary.com/v1_1/yash547/image/upload", {
+    data.append("upload_preset", process.env.REACT_APP_PRESET);
+    data.append("cloud_name", process.env.REACT_APP_CLOUDNAME);
+    fetch(process.env.REACT_APP_CLOUDURL, {
       method: "post",
       body: data,
     })

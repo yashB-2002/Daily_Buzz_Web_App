@@ -175,12 +175,7 @@ function Home() {
         <div className="main-container ">
           <div className="inner-container">
             <div className="photo-div">
-              <img
-                width="500px"
-                alt="post_image"
-                src={post.image}
-                // src="http://res.cloudinary.com/yash547/image/upload/v1667637763/sn5ghxihc971ps3lhldj.png"
-              />
+              <img width="500px" alt="post_image" src={post.image} />
             </div>
             <div className="sidebar-comments">
               <div className="card_header">
