@@ -1,0 +1,79 @@
+.chat-div {
+  display: flex;
+}
+.cont-outer-container {
+  flex: 2.9;
+}
+.contact-outer-container {
+  flex: 0.7;
+  height: 88vh;
+  display: flex;
+}
+.searchbar {
+  width: 19pc;
+  height: 6vh;
+  border-radius: 6px;
+  outline: none;
+  background-color: rgb(183, 187, 182);
+  border: none;
+  margin: 10px;
+  padding: 10px;
+}
+.user-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.user-image-2 {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-container {
+  display: flex;
+  margin: 10px;
+  padding: 9px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: rgb(241, 223, 238);
+}
+.userDetailsCont {
+  height: 70vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.msg-container {
+  margin-top: 10px;
+  height: 65vh;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.msg-input {
+  width: 50pc;
+  margin-left: 20px;
+  border: 2px solid rgb(183, 187, 182);
+  margin-top: 12px;
+  padding: 4px;
+  border-radius: 7px;
+}
+.msg-sender-cont {
+  background-color: rgb(241, 223, 238);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+  justify-content: space-around;
+  border-radius: 10px;
+}
+.msg-send-btn {
+  width: 5pc;
+  margin-top: 5px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  height: 2pc;
+}

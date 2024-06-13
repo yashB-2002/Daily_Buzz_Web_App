@@ -1,0 +1,107 @@
+.main-container {
+  width: 100vw;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(16, 13, 13, 0.3);
+}
+.inner-container {
+  display: flex;
+  position: absolute;
+  top: 19%;
+  left: 10%;
+  width: 80%;
+  background-color: #fff;
+}
+.photo-div {
+  display: flex;
+  align-items: center;
+}
+.photo-div img {
+  width: 100%;
+  object-fit: contain;
+}
+.sidebar-comments {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.card_header {
+  border-bottom: 2px solid rgb(216, 206, 206);
+}
+.show-comments {
+  margin: 3px 0 0 6px;
+  border-bottom: 2px solid rgb(216, 206, 206);
+  flex-grow: 4;
+}
+.commentt {
+  margin-bottom: 4px;
+}
+.show-comments .by {
+  font-weight: bolder;
+}
+.closee {
+  position: fixed;
+  top: 12%;
+  right: 10%;
+  font-weight: bolder;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: black;
+  color: #fff;
+  cursor: pointer;
+}
+.deletepost {
+  color: white;
+  cursor: pointer;
+  margin-top: 5px;
+  background-color: red;
+  border-radius: 3px;
+  margin-bottom: 7px;
+  padding: 5px;
+  font-weight: bolder;
+}
+/* Maintain the existing styles */
+
+/* For screens smaller than 768px (tablet portrait) */
+@media screen and (max-width: 768px) {
+  .inner-container {
+    flex-direction: column; /* Stack content vertically */
+    left: 5%;
+    width: 90%;
+    padding: 10px; /* Add padding for better spacing */
+    align-items: center; /* Center content horizontally */
+  }
+  .photo-div {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .sidebar-comments {
+    width: 100%; /* Expand to full width */
+    align-items: center; /* Center content horizontally */
+  }
+  .show-comments {
+    margin: 3px 0;
+    flex-grow: initial;
+    width: 100%; /* Expand to full width */
+  }
+  .closee {
+    top: 5%;
+    right: 5%;
+  }
+  /* Adjust other styles as needed */
+}
+
+/* For screens smaller than 480px (mobile) */
+@media screen and (max-width: 480px) {
+  .inner-container {
+    left: 2%;
+    width: 96%;
+    padding: 8px; /* Adjust padding for smaller screens */
+  }
+  .show-comments {
+    margin: 3px 0;
+  }
+  /* Adjust other styles as needed */
+}
