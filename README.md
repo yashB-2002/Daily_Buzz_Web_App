@@ -1,4 +1,4 @@
-# WebBazaar
+# Daily Buzz App
 
 ## This is a Social Media type of Web Application build using MERN Stack.
 ### Features of the Web App -
